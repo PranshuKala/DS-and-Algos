@@ -46,6 +46,18 @@ void pop(int arr[])
         top = top - 1;
     }
 }
+
+void peek(int arr[])
+{
+    if(top ==-1)
+    {
+        cout<<"The stack is empty \n";
+
+    }
+    else{
+        cout<<"The element at top is :"<<arr[top]<<"\n";
+    }
+}
 void count(int arr[])
 {
     int i = top;
@@ -58,6 +70,7 @@ void count(int arr[])
         cout << "The total elements in the stack are:" << top + 1 << "\n";
     }
 }
+
 
 int main()
 {
@@ -74,9 +87,14 @@ int main()
         cout << "2 Pop value \n";
         cout << "3 Count No of elements \n";
         cout << "4 Display Elements \n";
+        cout << "5 Peek \n";
         cin >> c;
         switch (c)
         {
+        case 0:
+        {
+            return 0;
+        }
         case 1:
         {
             push(stack, s);
@@ -95,6 +113,16 @@ int main()
         case 4:
         {
             display(stack);
+            continue;
+        }
+        case 5:
+        {
+            peek(stack);
+            continue;
+        }
+        default:
+        {
+            cout<<"Enter a valid choice \n";
             continue;
         }
         }
