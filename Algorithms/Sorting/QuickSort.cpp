@@ -12,27 +12,29 @@ void swap(int *x, int *y)
 int Partition(int *array, int start, int end)
 {
     int pivot = array[end];
-    int BreakIndex = start;
+    int p = start;
 
     for (int i = start; i < end; i++)
     {
         if (array[i] <= pivot)
         {
-            swap(&array[i], &array[BreakIndex]);
-            BreakIndex++;
-        }
+            swap(&array[i], &array[p]);
+            p++;
+        } 
     }
-    swap(&array[BreakIndex], &array[end]);
-    return BreakIndex;
+    swap(&array[p], &array[end]);
+
+
+    return p;
 }
 
 void QuickSort(int *array, int start, int end)
 {
     if (start < end)
     {
-        int BreakIndex = Partition(array, start, end);
-        QuickSort(array, start, BreakIndex - 1);
-        QuickSort(array, BreakIndex + 1, end);
+        int p = Partition(array, start, end);
+        QuickSort(array, start, p - 1);
+        QuickSort(array, p + 1, end);
     }
 }
 
@@ -48,9 +50,12 @@ int main()
         cin >> arr[i];
     }
     QuickSort(arr, 0, n - 1);
-    cout << "Sorted array: ";
+    cout << "Sorted array: " ;
     for (int i = 0; i < n; i++)
     {
         cout << arr[i] << " ";
+
     }
+    
     return 0;
+}
